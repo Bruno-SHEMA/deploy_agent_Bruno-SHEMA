@@ -7,7 +7,7 @@ printf "Please Provide Parent Directory version..."
 read input
 fi
 if [ -z "$input" ]; then
-echo "Erro: Didn't procide Project name"
+echo "Error: Didn't provide Project name"
 exit 1
 fi
 #command to create a directory
@@ -15,6 +15,7 @@ mkdir attendance_tracker_$input
 echo "Created directory attendance_tracker_$input"
 
 #Creating attendance_checker.py file
-touch attendance_checker.py
+touch attendance_tracker_$input/attendance_checker.py
+echo "Created attendance_checker.py file in attendance_tracker_$input directory"
 
 
