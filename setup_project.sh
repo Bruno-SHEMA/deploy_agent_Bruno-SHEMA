@@ -18,4 +18,5 @@ echo "Created directory attendance_tracker_$input"
 touch attendance_tracker_$input/attendance_checker.py
 echo "Created attendance_checker.py file in attendance_tracker_$input directory"
 
-
+#Creating a second directory(Helpers)
+mkdir helpers
