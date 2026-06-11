@@ -13,3 +13,8 @@ fi
 #command to create a directory
 mkdir attendance_tracker_$input
 echo "Created directory attendance_tracker_$input"
+
+#Creating attendance_checker.py file
+touch attendance_tracker_$input/attendance_checker.py
+
+
