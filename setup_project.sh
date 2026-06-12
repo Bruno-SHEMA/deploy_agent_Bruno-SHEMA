@@ -19,9 +19,9 @@ touch attendance_tracker_$input/attendance_checker.py
 echo "Created attendance_checker.py file in attendance_tracker_$input directory"
 
 #Creating a second directory(Helpers)
-mkdir helpers
+mkdir attendance_tracker_$input/helpers
 echo "Created Helpers/ directory within attendance_tracker_$input/"
 
 #reports directory
-mkdir reports
+mkdir attendance_tracker_$input/reports
 echo "Created new directory reports within attendance_tracker_$input/"
