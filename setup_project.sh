@@ -34,7 +34,7 @@ echo "Created Helpers/ directory within attendance_tracker_$input/"
 
 #reports directory
 mkdir attendance_tracker_$input/reports
-echo "Created new directory reports within attendance_tracker_$input/"
+echo "Created new directory reports/ within attendance_tracker_$input/"
 
 #files in helpers/ directory
 #if file doesnt exist, create it
@@ -95,7 +95,7 @@ def run_attendance_check():
 if __name__ == "__main__":
     run_attendance_check()
 EOF
-
+echo " Appended to attendance_checker.py"
 #Append codes to assets.csv
 cat > attendance_tracker_$input/Helpers/assets.csv << 'EOF'
 Email	Names	Attendance Count	Absence Count
@@ -104,6 +104,7 @@ bob@example.com	Bob Smith	7	8
 charlie@example.com	Charlie Davis	4	11
 diana@example.com	Diana Prince	15	0
 EOF
+echo " Appended to Helpers/assets.csv"
 
 #Append codes to config.json file
 cat > attendance_tracker_$input/Helpers/config.json << 'EOF'
@@ -116,6 +117,7 @@ cat > attendance_tracker_$input/Helpers/config.json << 'EOF'
     "total_sessions": 15
 }
 EOF
+echo "Appended to Helpers/config.json"
 
 #append codes to reports/reports.log
 cat > attendance_tracker_$input/reports/reports.log << 'EOF'
@@ -123,4 +125,16 @@ cat > attendance_tracker_$input/reports/reports.log << 'EOF'
 [2026-02-06 18:10:01.469363] ALERT SENT TO bob@example.com: URGENT: Bob Smith, your attendance is 46.7%. You will fail this class.
 [2026-02-06 18:10:01.469424] ALERT SENT TO charlie@example.com: URGENT: Charlie Davis, your attendance is 26.7%. You will fail this class.
 EOF
+echo " Appended to reports/reports.log"
+
+#2. Dynamic Configuration
+printf "Do you want to update attendance thresholds? (y/n):..."
+read update
+if [ "$update" == "y" ]; then
+echo $update
+elif [ "$update" == "n" ]; then
+echo $update
+else
+echo "Invalid Choice"
+fi
 
