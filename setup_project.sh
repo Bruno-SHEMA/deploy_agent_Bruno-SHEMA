@@ -20,3 +20,8 @@ echo "Created attendance_checker.py file in attendance_tracker_$input directory"
 
 #Creating a second directory(Helpers)
 mkdir helpers
+echo "Created Helpers/ directory within attendance_tracker_$input/"
+
+#reports directory
+mkdir reports
+echo "Created new directory reports within attendance_tracker_$input/"
