@@ -104,3 +104,15 @@ bob@example.com	Bob Smith	7	8
 charlie@example.com	Charlie Davis	4	11
 diana@example.com	Diana Prince	15	0
 EOF
+
+#Append codes to config.json file
+cat > attendance_tracker_$input/Helpers/config.json << 'EOF'
+{
+    "thresholds": {
+        "warning": 75,
+        "failure": 50
+    },
+    "run_mode": "live",
+    "total_sessions": 15
+}
+EOF
