@@ -116,3 +116,11 @@ cat > attendance_tracker_$input/Helpers/config.json << 'EOF'
     "total_sessions": 15
 }
 EOF
+
+#append codes to reports/reports.log
+cat > attendance_tracker_$input/reports/reports.log << 'EOF'
+--- Attendance Report Run: 2026-02-06 18:10:01.468726 ---
+[2026-02-06 18:10:01.469363] ALERT SENT TO bob@example.com: URGENT: Bob Smith, your attendance is 46.7%. You will fail this class.
+[2026-02-06 18:10:01.469424] ALERT SENT TO charlie@example.com: URGENT: Charlie Davis, your attendance is 26.7%. You will fail this class.
+EOF
+
