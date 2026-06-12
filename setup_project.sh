@@ -29,9 +29,20 @@ touch attendance_tracker_$input/attendance_checker.py
 echo "Created attendance_checker.py file in attendance_tracker_$input directory"
 
 #Creating a second directory(Helpers)
-mkdir attendance_tracker_$input/helpers
+mkdir attendance_tracker_$input/Helpers
 echo "Created Helpers/ directory within attendance_tracker_$input/"
 
 #reports directory
 mkdir attendance_tracker_$input/reports
 echo "Created new directory reports within attendance_tracker_$input/"
+
+#files in helpers/ directory
+#if file doesnt exist, create it
+
+HelpersAssets=attendance_tracker_$input/Helpers/assets.csv
+if [ ! -f "$HelpersAssets" ]; then
+touch attendance_tracker_$input/Helpers/assets.csv
+echo "Created assets.csv file in attendance_tracker_$input/Helpers/ directory"
+fi
+
+#echo "from assests.csv" > attendance_tracker_$input/Helpers/assets.csv
