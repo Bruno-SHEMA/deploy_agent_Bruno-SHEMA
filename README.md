@@ -9,7 +9,12 @@ To run the script: First clone the git repository using:
 
       git clone https://github.com/Bruno-SHEMA/deploy_agent_Bruno-SHEMA.git
  and navigate to the cloned directory, and run the script you can use:
-    `bash setup_project.sh` or './setup_project.sh`.
+
+    bash setup_project.sh
+
+ or 
+
+./setup_project.sh
 
 After running it, you get prompted to enter Parent directory version and after entering it, and pressing enter the script gets initiated and creats all the necesarry directories and files.
 After the script is done creating all directories and files, you get prompted "Do you want to update attendance thresholds? (y/n):..." if you choose Y, you then enter new values for warning threshold and failure threshold and then the script uses `sed` to update them in config.json. If you choose `N` the script uses default thresholds.
