@@ -137,7 +137,8 @@ if [[ "$update" == "y" || "$update" == "Y" || "$update" == "yes" || "$update" ==
     printf "Enter new value for Warning threshold...."
     read newWarning
     if [[ "$newWarning" =~ ^[0-9]+$ ]] && [ "$newWarning" -ge 0 ] && [ "$newWarning" -le 100 ]; then
-     echo "Good Range"
+      sed -i "s/\"warning\": *[0-9]\+/\"warning\": $newWarning/" attendance_tracker_$input/Helpers/config.json
+    echo "Updated Warning Threshold" 
      break
     else
       echo "ERROR: Please enter numbers only from 0-100"
@@ -148,7 +149,8 @@ if [[ "$update" == "y" || "$update" == "Y" || "$update" == "yes" || "$update" ==
     printf "Enter new value for Failure threshold...."
     read newFailure
     if [[ "$newFailure" =~ ^[0-9]+$ ]] && [ "$newFailure" -ge 0 ] && [ "$newFailure" -le 100 ]; then
-     echo "Good Range"
+     sed -i "s/\"failure\": *[0-9]\+/\"failure\": $newFailure/" attendance_tracker_$input/Helpers/config.json
+     echo "Updated failure threshold"
      break
     else
       echo "ERROR: Please enter numbers only from 0-100"
@@ -157,6 +159,8 @@ if [[ "$update" == "y" || "$update" == "Y" || "$update" == "yes" || "$update" ==
 
 elif [[ "$update" == "n" || "$update" == "N" || "$update" == "no" || "$update" == "No" || "$update" == "NO" ]]; then
 echo "You chose No, we will use default Thresholds"
+elif [ -z "$update" ]; then
+echo "No choice made, we are using Default thresholds"
 else
 echo "Invalid Choice, Please choose between y/n"
 exit 1
