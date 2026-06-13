@@ -26,8 +26,9 @@ echo "Created directory attendance_tracker_$input"
 
 #Capture user Interuptions
 userInterupts() {
+  printf "\n"
   echo "Signal Detected, Saving Current state in an archive...."
-  cp -r attendance_tracker_$input attendance_tracker_$input_archive
+  cp -r attendance_tracker_$input attendance_tracker_${input}_archive
   rm -rf "attendance_tracker_$input"
   echo "Current project state saved, and successfully cleaned the workspace"
   exit 1
