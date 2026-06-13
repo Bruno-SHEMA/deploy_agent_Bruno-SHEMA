@@ -24,6 +24,10 @@ fi
 mkdir attendance_tracker_$input
 echo "Created directory attendance_tracker_$input"
 
+#Capture user Interuptions
+trap " echo You pressed CTRL + C" SIGINT
+
+
 #Creating attendance_checker.py file
 touch attendance_tracker_$input/attendance_checker.py
 echo "Created attendance_checker.py file in attendance_tracker_$input directory"
@@ -138,7 +142,7 @@ if [[ "$update" == "y" || "$update" == "Y" || "$update" == "yes" || "$update" ==
     read newWarning
     if [[ "$newWarning" =~ ^[0-9]+$ ]] && [ "$newWarning" -ge 0 ] && [ "$newWarning" -le 100 ]; then
       sed -i "s/\"warning\": *[0-9]\+/\"warning\": $newWarning/" attendance_tracker_$input/Helpers/config.json
-    echo "Updated Warning Threshold" 
+    echo "Updated Warning Threshold, new Warning Threshold: $newWarning"
      break
     else
       echo "ERROR: Please enter numbers only from 0-100"
@@ -150,7 +154,7 @@ if [[ "$update" == "y" || "$update" == "Y" || "$update" == "yes" || "$update" ==
     read newFailure
     if [[ "$newFailure" =~ ^[0-9]+$ ]] && [ "$newFailure" -ge 0 ] && [ "$newFailure" -le 100 ]; then
      sed -i "s/\"failure\": *[0-9]\+/\"failure\": $newFailure/" attendance_tracker_$input/Helpers/config.json
-     echo "Updated failure threshold"
+     echo "Updated failure threshold, new Failure threshold value: $newFailure"
      break
     else
       echo "ERROR: Please enter numbers only from 0-100"
