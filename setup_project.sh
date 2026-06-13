@@ -178,3 +178,30 @@ echo "Invalid Choice, Please choose between y/n"
 exit 1
 fi
 
+#4. Environment Validation
+echo "Please wait, Performing a health check before completion..."
+if python3 --version; then
+ echo "Ok: Python3 exists"
+else
+ echo "Fail: Python3 is missing"
+fi
+
+if [ -d ""attendance_tracker_$input ]; then
+ if [ -d "attendance_tracker_$input/Helpers" ] && [ -d "attendance_tracker_$input/reports" ]; then
+  if [ -f "attendance_tracker_$input/Helpers/assets.csv" ] && [ -f "attendance_tracker_$input/Helpers/config.json" ] && [ -f "attendance_tracker_$input/reports/reports.log" ]; then
+    echo "Success: Application directory followed"
+      if command -v tree >/dev/null 2>&1; then 
+        echo
+      else
+          sudo apt install tree
+      fi
+    tree
+  else
+    echo "Files structure not followed"
+  fi
+ else
+  echo "directories structure not followed"
+ fi
+else
+ echo "parent Directory structure not followef"
+fi
