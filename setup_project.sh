@@ -130,11 +130,12 @@ echo " Appended to reports/reports.log"
 #2. Dynamic Configuration
 printf "Do you want to update attendance thresholds? (y/n):..."
 read update
-if [ "$update" == "y" ]; then
-echo $update
-elif [ "$update" == "n" ]; then
-echo $update
+if [[ "$update" == "y" || "$update" == "Y" ]]; then
+echo "Updating Thresholds..."
+elif [[ "$update" == "n" || "$update" == "N" ]]; then
+echo "You chose No, we will use default Thresholds"
 else
-echo "Invalid Choice"
+echo "Invalid Choice, Please choose between y/n"
+exit 1
 fi
 
