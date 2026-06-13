@@ -25,7 +25,14 @@ mkdir attendance_tracker_$input
 echo "Created directory attendance_tracker_$input"
 
 #Capture user Interuptions
-trap " echo You pressed CTRL + C" SIGINT
+userInterupts() {
+  echo "Signal Detected, Saving Current state in an archive...."
+  cp -r attendance_tracker_$input attendance_tracker_$input_archive
+  rm -rf "attendance_tracker_$input"
+  echo "Current project state saved, and successfully cleaned the workspace"
+  exit 1
+}
+trap userInterupts SIGINT
 
 
 #Creating attendance_checker.py file
