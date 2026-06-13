@@ -130,9 +130,25 @@ echo " Appended to reports/reports.log"
 #2. Dynamic Configuration
 printf "Do you want to update attendance thresholds? (y/n):..."
 read update
-if [[ "$update" == "y" || "$update" == "Y" ]]; then
-echo "Updating Thresholds..."
-elif [[ "$update" == "n" || "$update" == "N" ]]; then
+if [[ "$update" == "y" || "$update" == "Y" || "$update" == "yes" || "$update" == "Yes" || "$update" == "YES" ]]; then
+  echo "Updating Thresholds..."
+
+  while true; do
+    printf "Enter new value for Warning threshold...."
+    read newWarning
+    if [[ "$newWarning" =~ ^[0-9]+$ ]] && [ "$newWarning" -ge 0 ] && [ "$newWarning" -le 100 ]; then
+     echo "Good Range"
+     
+    else
+      echo "ERROR: Please enter numbers only from 0-100"
+    fi
+  done
+
+
+  printf "Enter new value for Failure threshold...."
+  read newFailure
+
+elif [[ "$update" == "n" || "$update" == "N" || "$update" == "no" || "$update" == "No" || "$update" == "NO" ]]; then
 echo "You chose No, we will use default Thresholds"
 else
 echo "Invalid Choice, Please choose between y/n"
