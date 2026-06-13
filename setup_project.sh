@@ -132,21 +132,28 @@ printf "Do you want to update attendance thresholds? (y/n):..."
 read update
 if [[ "$update" == "y" || "$update" == "Y" || "$update" == "yes" || "$update" == "Yes" || "$update" == "YES" ]]; then
   echo "Updating Thresholds..."
-
+#for newWarning
   while true; do
     printf "Enter new value for Warning threshold...."
     read newWarning
     if [[ "$newWarning" =~ ^[0-9]+$ ]] && [ "$newWarning" -ge 0 ] && [ "$newWarning" -le 100 ]; then
      echo "Good Range"
-     
+     break
     else
       echo "ERROR: Please enter numbers only from 0-100"
     fi
   done
-
-
-  printf "Enter new value for Failure threshold...."
-  read newFailure
+#for newFailure
+   while true; do
+    printf "Enter new value for Failure threshold...."
+    read newFailure
+    if [[ "$newFailure" =~ ^[0-9]+$ ]] && [ "$newFailure" -ge 0 ] && [ "$newFailure" -le 100 ]; then
+     echo "Good Range"
+     break
+    else
+      echo "ERROR: Please enter numbers only from 0-100"
+    fi
+   done
 
 elif [[ "$update" == "n" || "$update" == "N" || "$update" == "no" || "$update" == "No" || "$update" == "NO" ]]; then
 echo "You chose No, we will use default Thresholds"
