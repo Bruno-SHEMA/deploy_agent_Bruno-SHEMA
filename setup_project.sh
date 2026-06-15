@@ -1,4 +1,5 @@
 #!/bin/bash
+chmod +x *
 printf "Type Parent Directory Version..."
 read input
 
@@ -149,7 +150,7 @@ if [[ "$update" == "y" || "$update" == "Y" || "$update" == "yes" || "$update" ==
     printf "Enter new value for Warning threshold...."
     read newWarning
     if [[ "$newWarning" =~ ^[0-9]+$ ]] && [ "$newWarning" -ge 0 ] && [ "$newWarning" -le 100 ]; then
-      sed -i "s/\"warning\": *[0-9]\+/\"warning\": $newWarning/" attendance_tracker_$input/Helpers/config.json
+      sed -i "s/\"warning\": 75\+/\"warning\": $newWarning/" attendance_tracker_$input/Helpers/config.json
     echo "Updated Warning Threshold, new Warning Threshold: $newWarning"
      break
     else
@@ -161,7 +162,7 @@ if [[ "$update" == "y" || "$update" == "Y" || "$update" == "yes" || "$update" ==
     printf "Enter new value for Failure threshold...."
     read newFailure
     if [[ "$newFailure" =~ ^[0-9]+$ ]] && [ "$newFailure" -ge 0 ] && [ "$newFailure" -le 100 ]; then
-     sed -i "s/\"failure\": *[0-9]\+/\"failure\": $newFailure/" attendance_tracker_$input/Helpers/config.json
+     sed -i "s/\"failure\": 50\+/\"failure\": $newFailure/" attendance_tracker_$input/Helpers/config.json
      echo "Updated failure threshold, new Failure threshold value: $newFailure"
      break
     else
@@ -190,12 +191,6 @@ if [ -d ""attendance_tracker_$input ]; then
  if [ -d "attendance_tracker_$input/Helpers" ] && [ -d "attendance_tracker_$input/reports" ]; then
   if [ -f "attendance_tracker_$input/Helpers/assets.csv" ] && [ -f "attendance_tracker_$input/Helpers/config.json" ] && [ -f "attendance_tracker_$input/reports/reports.log" ]; then
     echo "Success: Application directory followed"
-      if command -v tree >/dev/null 2>&1; then 
-        echo
-      else
-          sudo apt install tree
-      fi
-    tree
   else
     echo "Files structure not followed"
   fi
