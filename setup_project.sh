@@ -29,7 +29,8 @@ echo "Created directory attendance_tracker_$input"
 userInterupts() {
   printf "\n"
   echo "Signal Detected, Saving Current state in an archive...."
-  cp -r attendance_tracker_$input attendance_tracker_${input}_archive
+  #tar command used to bundle current project state into an archive -c: create archive, -z:compress using gzip -f:assign file name
+  tar -czf "attendance_tracker_${input}_archive" attendance_tracker_$input
   rm -rf "attendance_tracker_$input"
   echo "Current project state saved, and successfully cleaned the workspace"
   exit 1
@@ -149,7 +150,7 @@ if [[ "$update" == "y" || "$update" == "Y" || "$update" == "yes" || "$update" ==
   while true; do
     printf "Enter new value for Warning threshold...."
     read newWarning
-    if [[ "$newWarning" =~ ^[0-9]+$ ]] && [ "$newWarning" -ge 0 ] && [ "$newWarning" -le 100 ]; then
+    if [[ "$newWarning" =~ ^[0-9]+(\.[0-9]+)?$ ]] && (( warning >=0 && warning <= 100 )); then
       sed -i "s/\"warning\": 75\+/\"warning\": $newWarning/" attendance_tracker_$input/Helpers/config.json
     echo "Updated Warning Threshold, new Warning Threshold: $newWarning"
      break
