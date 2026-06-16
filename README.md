@@ -1,7 +1,7 @@
 Short Project Description
 
  This project contains a shell scripting file called setup_project.sh that contains scripts that automatically create Attendance tracker project, its parent directory,other required directories and files.
-the script also performs an action of updating default thresholds in reports.log file, imprements a signal trap and environment validation.
+the script also performs an action of updating default thresholds in config.json file, imprements a signal trap and environment validation.
 
 How to Run the script:
 
